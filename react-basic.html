@@ -103,23 +103,11 @@ Full Page
    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-      
+    const productCost = 10+8*2;
+    console.log(productCost);      
 
-        const div = (
-            <div>
-                <button>Good job!</button>
-                <p>My name is Simon</p>
-                
-                 <p>Cotton socks</p>
-                 <p>Price: ${10}</p>
-                 <button>Add to cart</button>  
-            </div>
-
-            
-        );
-        
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(div);
+      ReactDOM.createRoot(container).render();
     </script>
   </body>
 </html>
