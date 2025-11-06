@@ -44,44 +44,50 @@
     return(
       <div>
          {sender == 'robot' && (
-            <img src="robot.png" width="25"/>
+            <img src="robot.png" width="50"/>
           )} 
         {message}
          {sender == 'user' && (
-            <img src="user.png" width="25"/>
+            <img src="user.png" width="50"/>
          )}
       </div>
      );
    }
+   
 
   function App(){
     const chatMessages = [{
         message:' hello chatBot',
-        sender:'user'
+        sender:'user',
+        id:'id1'
+
     },{
         message:'Hello! how can I help you?',
-        sender:'robot'
+        sender:'robot',
+         id:'id2'
     },{
         message:'can you get today date?',
-        sender:'user'
+        sender:'user',
+         id:'id3'
     },{
         message:'Today is November 6',
-        sender:'robot'
+        sender:'robot',
+         id:'id4'
     }];
 
-    const chatMessageComponents = chatMessages.map((msg) =>{
-      return(
-        <ChatMessage
-         message = {msg.message}
-         sender = {msg.sender}
-        />
-        
-      );
-    });
     return(
            <>
               <ChatInput/>
-              {chatMessageComponents}
+              { chatMessages.map((msg) =>{
+                  return(
+                    <ChatMessage
+                        message = {msg.message}
+                        sender = {msg.sender}
+                        key ={ChatMessage.id}
+                    />
+                    
+                  );
+                })}
            </>
     );
   }
