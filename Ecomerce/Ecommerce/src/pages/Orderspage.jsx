@@ -1,3 +1,4 @@
+
 import { Header } from '../components/Header';
 import './OrdersPage.css'
 
@@ -8,7 +9,7 @@ export function Orderspage() {
 
          <title>Orders</title>
      
-      <Header/>
+      <Header />
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
