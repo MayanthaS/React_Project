@@ -22,7 +22,7 @@ useEffect(() =>{
     <Routes>
       <Route index element={<Homepage  cart ={cart}/>}/>
       <Route path='checkout' element={<Checkoutpage cart ={cart}/>}/>
-      <Route path='orders' element={<Orderspage/>} />
+      <Route path='orders' element={<Orderspage cart ={cart}/>} />
       <Route path=''/>
       
       
