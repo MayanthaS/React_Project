@@ -9,7 +9,7 @@ export function Orderspage({ cart }) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("./api/orders?expand=products").then((response) => {
+    axios.get('./api/orders?expand=products').then((response) => {
       setOrders(response.data);
     });
   }, []);
@@ -22,18 +22,18 @@ export function Orderspage({ cart }) {
         <div className="page-title">Your Orders</div>
 
         <div className="orders-grid">
-          {orders.product?.map((orderProduct) => {
+          {orders.map((order) => {
             return (
-              <div key={orderProduct.id} className="order-container">
+              <div key={order.id} className="order-container">
                 <div className="order-header">
                   <div className="order-header-left-section">
                     <div className="order-date">
                       <div className="order-header-label">Order Placed:</div>
-                      <div>{dayjs(orderProduct.orderTimeMS).format("MMMM D")}</div>
+                      <div>{dayjs(order.orderTimeMS).format("MMMM D")}</div>
                     </div>
                     <div className="order-total">
                       <div className="order-header-label">Total:</div>
-                      <div>{formatMoney(orderProduct.totalCostCents)}</div>
+                      <div>{formatMoney(order.totalCostCents)}</div>
                     </div>
                   </div>
 
@@ -44,9 +44,9 @@ export function Orderspage({ cart }) {
                 </div>
 
                 <div className="order-details-grid">
-                  {order.product.map((orderProduct) => {
+                  {order.products?.map((orderProduct) => {
                     return (
-                      <Fragment key={orderProduct.id}>
+                      <Fragment key={orderProduct.product.id}>
                         <div className="product-image-container">
                           <img src={orderProduct.product.image} />
                         </div>
@@ -78,22 +78,10 @@ export function Orderspage({ cart }) {
                           </a>
                         </div>
 
-                        <div className="product-image-container">
-                          <img src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" />
-                        </div>
+                        
                       </Fragment>
                     );
                   })}
-
-                
-
-                  <div className="product-actions">
-                    <a href="/tracking">
-                      <button className="track-package-button button-secondary">
-                        Track package
-                      </button>
-                    </a>
-                  </div>
                 </div>
               </div>
             );
