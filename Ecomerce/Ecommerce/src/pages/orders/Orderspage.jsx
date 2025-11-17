@@ -1,13 +1,18 @@
 import axios from "axios";
 import dayjs from "dayjs";
+
 import { useState, useEffect,Fragment } from "react";
 import { Header } from "../../components/Header";
 import { formatMoney } from "../../utils/money";
 import "./OrdersPage.css";
 
-export function Orderspage({ cart }) {
+export function Orderspage({ cart,loadCart}) {
   const [orders, setOrders] = useState([]);
-
+ const addCart = async () =>{
+      await axios.post('/api/checkoutpage');
+      await loadCart();
+     
+    };
   useEffect(() => {
     axios.get('./api/orders?expand=products').then((response) => {
       setOrders(response.data);
@@ -64,7 +69,7 @@ export function Orderspage({ cart }) {
                               className="buy-again-icon"
                               src="images/icons/buy-again.png"
                             />
-                            <span className="buy-again-message">
+                            <span className="buy-again-message"onClick={addCart}>
                               Add to Cart
                             </span>
                           </button>
